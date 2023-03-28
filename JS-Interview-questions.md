@@ -1,6 +1,7 @@
 # JavaScript Interview Questions & Answers
 
 > Click :star:if you like the project and follow [@SudheerJonna](https://twitter.com/SudheerJonna) for more updates. Coding questions available [here](#coding-exercise). PDF and Epub versions available at [actions tab](https://github.com/sudheerj/JavaScript-Interview-Questions/actions).
+
 ---
 
 <p align="center">
@@ -514,11 +515,16 @@
            name: "Sudheer",
            age: 34
       };
+
       Object literal property values can be of any data type, including array, function, and nested object.
       ```
+
       **Note:** This is an easiest way to create an object
+
    4. **Function constructor:**
+
       Create any function and apply the new operator to create object instances,
+
       ```javascript
       function Person(name) {
         this.name = name;
@@ -541,6 +547,7 @@
 
       ```javascript
       function func() {};
+
       new func(x, y, z);
       ```
 
@@ -549,8 +556,10 @@
       ```javascript
       // Create a new instance using function prototype.
       var newInstance = Object.create(func.prototype)
+
       // Call the function
       var result = func.call(newInstance, x, y, z),
+
       // If the result is a non-null object then use it otherwise just use the new instance.
       console.log(result && typeof result === 'object' ? result : newInstance);
       ```
@@ -565,6 +574,7 @@
           this.name = name;
         }
       }
+
       var object = new Person("Sudheer");
       ```
 
@@ -599,11 +609,13 @@
    ```javascript
    var employee1 = { firstName: "John", lastName: "Rodson" };
    var employee2 = { firstName: "Jimmy", lastName: "Baily" };
+
    function invite(greeting1, greeting2) {
      console.log(
        greeting1 + " " + this.firstName + " " + this.lastName + ", " + greeting2
      );
    }
+
    invite.call(employee1, "Hello", "How are you?"); // Hello John Rodson, How are you?
    invite.call(employee2, "Hello", "How are you?"); // Hello Jimmy Baily, How are you?
    ```
@@ -613,11 +625,13 @@
    ```javascript
    var employee1 = { firstName: "John", lastName: "Rodson" };
    var employee2 = { firstName: "Jimmy", lastName: "Baily" };
+
    function invite(greeting1, greeting2) {
      console.log(
        greeting1 + " " + this.firstName + " " + this.lastName + ", " + greeting2
      );
    }
+
    invite.apply(employee1, ["Hello", "How are you?"]); // Hello John Rodson, How are you?
    invite.apply(employee2, ["Hello", "How are you?"]); // Hello Jimmy Baily, How are you?
    ```
@@ -627,11 +641,13 @@
    ```javascript
    var employee1 = { firstName: "John", lastName: "Rodson" };
    var employee2 = { firstName: "Jimmy", lastName: "Baily" };
+
    function invite(greeting1, greeting2) {
      console.log(
        greeting1 + " " + this.firstName + " " + this.lastName + ", " + greeting2
      );
    }
+
    var inviteEmployee1 = invite.bind(employee1);
    var inviteEmployee2 = invite.bind(employee2);
    inviteEmployee1("Hello", "How are you?"); // Hello John Rodson, How are you?
@@ -689,6 +705,7 @@
    let arrayIntegersOriginal1 = [1, 2, 3, 4, 5];
    let arrayIntegersOriginal2 = [1, 2, 3, 4, 5];
    let arrayIntegersOriginal3 = [1, 2, 3, 4, 5];
+
    let arrayIntegers1 = arrayIntegersOriginal1.splice(0, 2); // returns [1, 2]; original array: [3, 4, 5]
    let arrayIntegers2 = arrayIntegersOriginal2.splice(3); // returns [4, 5]; original array: [1, 2, 3]
    let arrayIntegers3 = arrayIntegersOriginal3.splice(3, 1, "a", "b", "c"); //returns [4]; original array: [1, 2, 3, "a", "b", "c", 5]
@@ -817,6 +834,7 @@
     ```javascript
     const multiArgFunction = (a, b, c) => a + b + c;
     console.log(multiArgFunction(1, 2, 3)); // 6
+
     const curryUnaryFunction = (a) => (b) => (c) => a + b + c;
     curryUnaryFunction(1); // returns a function: b => c =>  1 + b + c
     curryUnaryFunction(1)(2); // returns a function: c => 3 + c
@@ -840,6 +858,7 @@
     //Pure
     const pureAddNumber = (number) => (argNumberArray) =>
       argNumberArray.concat([number]);
+
     //Display the results
     console.log(impureAddNumber(6)); // returns 1
     console.log(numberArray); // returns [6]
@@ -914,6 +933,7 @@
       case 0:
         let name;
         break;
+
       case 1:
         let name; // SyntaxError for redeclaration.
         break;
@@ -1042,6 +1062,7 @@
 
     ```javascript
     message("Good morning"); //Good morning
+
     function message(name) {
       console.log(name);
     }
@@ -1061,6 +1082,7 @@
       this.model = model;
       this.color = color;
     }
+
     Bike.prototype.getDetails = function () {
       return this.model + " bike has" + this.color + " color";
     };
@@ -1074,6 +1096,7 @@
         this.color = color;
         this.model = model;
       }
+
       getDetails() {
         return this.model + " bike has" + this.color + " color";
       }
@@ -1261,10 +1284,13 @@
     ```javascript
     // Save data to sessionStorage
     sessionStorage.setItem("key", "value");
+
     // Get saved data from sessionStorage
     let data = sessionStorage.getItem("key");
+
     // Remove saved data from sessionStorage
     sessionStorage.removeItem("key");
+
     // Remove all saved data from sessionStorage
     sessionStorage.clear();
     ```
@@ -1340,11 +1366,13 @@
 
     ```javascript
     let i = 0;
+
     function timedCount() {
       i = i + 1;
       postMessage(i);
       setTimeout("timedCount()", 500);
     }
+
     timedCount();
     ```
 
@@ -1414,6 +1442,7 @@
       },
       (reject) => {}
     );
+
     promise.then((value) => console.log(value));
     ```
 
@@ -1448,10 +1477,12 @@
     function callbackFunction(name) {
       console.log("Hello " + name);
     }
+
     function outerFunction(callback) {
       let name = prompt("Please enter your name.");
       callback(name);
     }
+
     outerFunction(callbackFunction);
     ```
 
@@ -1474,6 +1505,7 @@
     }
     firstFunction();
     secondFunction();
+
     Output;
     // Second function called
     // First function called
@@ -1565,8 +1597,10 @@
     ```javascript
     loadScript("/script1.js", function (script) {
       console.log("first script is loaded");
+
       loadScript("/script2.js", function (script) {
         console.log("second script is loaded");
+
         loadScript("/script3.js", function (script) {
           console.log("third script is loaded");
           // after all scripts are loaded
@@ -1631,6 +1665,7 @@
     var promise2 = new Promise(function (resolve, reject) {
       setTimeout(resolve, 100, "two");
     });
+
     Promise.race([promise1, promise2]).then(function (value) {
       console.log(value); // "two" // Both promises will resolve, but promise2 is faster
     });
@@ -1665,6 +1700,7 @@
     ```javascript
     x = 3.14; // This will not cause an error.
     myFunction();
+
     function myFunction() {
       "use strict";
       y = 3.14; // This will cause an error
@@ -1701,6 +1737,7 @@
     ```javascript
     var user = { name: "John", age: 20 };
     delete user.age;
+
     console.log(user); // {name: "John"}
     ```
 
@@ -1883,6 +1920,7 @@
     isFinite(Infinity); // false
     isFinite(NaN); // false
     isFinite(-Infinity); // false
+
     isFinite(100); // true
     ```
 
@@ -2095,11 +2133,13 @@
      <div onclick="secondFunc()">DIV 2
        <div onclick="firstFunc(event)">DIV 1</div>
      </div>
+
      <script>
      function firstFunc(event) {
        alert("DIV 1");
        event.stopPropagation();
      }
+
      function secondFunc() {
        alert("DIV 2");
      }
@@ -2164,6 +2204,7 @@
 
      ```javascript
      var form = document.querySelector("#registration-form");
+
      // Listen for changes to fields inside the form
      form.addEventListener(
        "input",
@@ -2250,7 +2291,9 @@
      }
      function start() {
        msg =setTimeout(greeting, 3000);
+
      }
+
      function stop() {
          clearTimeout(msg);
      }
@@ -2273,7 +2316,9 @@
      }
      function start() {
        msg = setInterval(greeting, 3000);
+
      }
+
      function stop() {
          clearInterval(msg);
      }
@@ -2404,6 +2449,7 @@
      const user = {
        name: "John",
      };
+
      console.log(user.name !== undefined); // true
      console.log(user.nickName !== undefined); // false
      ```
@@ -2420,6 +2466,7 @@
        k2: "value2",
        k3: "value3",
      };
+
      for (var key in object) {
        if (object.hasOwnProperty(key)) {
          console.log(key + " -> " + object[key]); // k1 -> value1 ...
@@ -2454,6 +2501,7 @@
            return false;
          }
        }
+
        return JSON.stringify(obj) === JSON.stringify({});
      }
      ```
@@ -2472,6 +2520,7 @@
        }
        return total;
      }
+
      sum(1, 2, 3); // returns 6
      ```
 
@@ -2521,6 +2570,7 @@
      var dd = String(today.getDate()).padStart(2, "0");
      var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
      var yyyy = today.getFullYear();
+
      today = mm + "/" + dd + "/" + yyyy;
      document.write(today);
      ```
@@ -2652,7 +2702,9 @@
      fn = function (x) {
        //Function code goes here
      };
+
      fn.name = "John";
+
      fn.profile = function (y) {
        //Profile code goes here
      };
@@ -2711,6 +2763,7 @@
 
      ```javascript
      var i, j;
+
      loop1: for (i = 0; i < 3; i++) {
        loop2: for (j = 0; j < 3; j++) {
          if (i === j) {
@@ -2719,6 +2772,7 @@
          console.log("i = " + i + ", j = " + j);
        }
      }
+
      // Output is:
      //   "i = 1, j = 0"
      //   "i = 2, j = 0"
@@ -3114,6 +3168,7 @@
        window.innerWidth ||
        document.documentElement.clientWidth ||
        document.body.clientWidth;
+
      var height =
        window.innerHeight ||
        document.documentElement.clientHeight ||
@@ -3149,7 +3204,9 @@
          ? value3
          : value4;
      }
+
      // The above conditional operator is equivalent to:
+
      function traceValue(someParam) {
        if (condition1) {
          return value1;
@@ -3174,37 +3231,53 @@
      ```javascript
      window.onload = function ...
      ```
+
      1. **document.onload:**
+
      ```javascript
      document.onload = function ...
      ```
+
      1. **body onload:**
+
      ```javascript
      <body onload="script();">
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 176. ### What is the difference between proto and prototype
+
      The `__proto__` object is the actual object that is used in the lookup chain to resolve methods, etc. Whereas `prototype` is the object that is used to build `__proto__` when you create an object with new.
+
      ```javascript
      new Employee().__proto__ === Employee.prototype;
      new Employee().prototype === undefined;
      ```
+
      There are few more differences,
+
      | feature             | Prototype                            | proto                                      |
      | ------------------- | ------------------------------------- | ----------------------------------------------- |
      | Access   | All the function constructors have prototype properties.  |   All the objects have \_\_proto__ property                      |
      | Purpose      | Used to reduce memory wastage with a single copy of function               | Used in lookup chain to resolve methods, constructors etc.                        |
      | ECMAScript      | Introduced in ES6               | Introduced in ES5                          |
      | Usage             | Frequently used                             | Rarely used                                 |
+
+
      **[⬆ Back to Top](#table-of-contents)**
+
 177. ### Give an example where do you really need semicolon
+
      It is recommended to use semicolons after every statement in JavaScript. For example, in the below case it throws an error ".. is not a function" at runtime due to missing semicolon.
+
      ```javascript
      // define a function
      var fn = (function () {
        //...
      })(
        // semicolon missing at this line
+
        // then execute some code inside a closure
        function () {
          //...
@@ -3234,8 +3307,10 @@
      const obj = {
        prop: 100,
      };
+
      Object.freeze(obj);
      obj.prop = 200; // Throws an error in strict mode
+
      console.log(obj.prop); //100
      ```
 
@@ -3249,6 +3324,7 @@
          department: 'IT'
        }
      };
+
      Object.freeze(user);
      user.employment.department = 'HR';
      ```
@@ -3282,6 +3358,7 @@
        (navigator.languages && navigator.languages[0]) || // Chrome / Firefox
        navigator.language || // All browsers
        navigator.userLanguage; // IE <= 10
+
      console.log(language);
      ```
 
@@ -3395,7 +3472,9 @@
      function calculateSum(x, y, z) {
        return x + y + z;
      }
+
      const numbers = [1, 2, 3];
+
      console.log(calculateSum(...numbers)); // 6
      ```
 
@@ -3469,8 +3548,11 @@
      ```javascript
      const target = { a: 1, b: 2 };
      const source = { b: 3, c: 4 };
+
      const returnedTarget = Object.assign(target, source);
+
      console.log(target); // { a: 1, b: 3, c: 4 }
+
      console.log(returnedTarget); // { a: 1, b: 3, c: 4 }
      ```
 
@@ -3503,9 +3585,11 @@
          return prop in obj ? obj[prop] : 100;
        },
      };
+
      var p = new Proxy({}, handler);
      p.a = 10;
      p.b = null;
+
      console.log(p.a, p.b); // 10, null
      console.log("c" in p, p.c); // false, 100
      ```
@@ -3559,7 +3643,9 @@
      const object = {
        property: "Hello, Good morning",
      };
+
      Object.seal(object); // Using seal() method to seal the object
+
      console.log(Object.isSealed(object)); // checking whether the object is sealed or not
      ```
 
@@ -3574,6 +3660,7 @@
        a: "Good morning",
        b: 100,
      };
+
      for (let [key, value] of Object.entries(object)) {
        console.log(`${key}: ${value}`); // a: 'Good morning'
        // b: 100
@@ -3593,6 +3680,7 @@
        a: "Good morning",
        b: 100,
      };
+
      for (let value of Object.values(object)) {
        console.log(`${value}`); // 'Good morning'
        100;
@@ -3611,6 +3699,7 @@
        gender: "male",
        age: 40,
      };
+
      console.log(Object.keys(user)); //['name', 'gender', 'age']
      ```
 
@@ -3627,8 +3716,11 @@
          console.log(`My name is ${this.name}.`);
        },
      };
+
      const admin = Object.create(user);
+
      admin.name = "Nick"; // Remember that "name" is a property set on "admin" but not on "user" object
+
      admin.printInfo(); // My name is Nick
      ```
 
@@ -3823,9 +3915,11 @@
      function (optionalParameters) {
        //do something
      }
+
      const myFunction = function(){ //Anonymous function assigned to a variable
        //do something
      };
+
      [1, 2, 3].map(function(element){ //Anonymous function used as a callback function
        //do something
      });
@@ -3887,11 +3981,14 @@
 
      ```javascript
      const newObject = {};
+
      Object.defineProperty(newObject, "newProperty", {
        value: 100,
        writable: false,
      });
+
      console.log(newObject.newProperty); // 100
+
      newObject.newProperty = 200; // It throws an error in strict mode due to writable setting
      ```
 
@@ -3921,6 +4018,7 @@
 
      ```javascript
      var obj = { counter: 0 };
+
      // Define getters
      Object.defineProperty(obj, "increment", {
        get: function () {
@@ -3932,6 +4030,7 @@
          this.counter--;
        },
      });
+
      // Define setters
      Object.defineProperty(obj, "add", {
        set: function (value) {
@@ -3943,6 +4042,7 @@
          this.counter -= value;
        },
      });
+
      obj.add = 10;
      obj.subtract = 5;
      console.log(obj.increment); //6
@@ -4180,6 +4280,7 @@
      function eatFruits() {
        return "I'm eating fruits";
      }
+
      // Invoke the `hungry` function
      hungry();
      ```
@@ -4215,10 +4316,12 @@
             target.isAdmin = isAdmin;
         }
      }
+
      @admin(true)
      class User() {
      }
      console.log(User.isAdmin); //true
+
       @admin(false)
       class User() {
       }
@@ -4248,6 +4351,7 @@
      var x = "100";
      var y = +x;
      console.log(typeof x, typeof y); // string, number
+
      var a = "Hello";
      var b = +a;
      console.log(typeof a, typeof b, b); // string, number, NaN
@@ -4304,6 +4408,7 @@
      function findMax(arr) {
        return Math.max.apply(null, arr);
      }
+
      console.log(findMin(marks));
      console.log(findMax(marks));
      ```
@@ -4326,6 +4431,7 @@
        }
        return min;
      }
+
      function findMax(arr) {
        var length = arr.length;
        var max = -Infinity;
@@ -4336,6 +4442,7 @@
        }
        return max;
      }
+
      console.log(findMin(marks));
      console.log(findMax(marks));
      ```
@@ -4361,45 +4468,69 @@
      <script type="module" src="welcome-module.js"></script>;
      console.log(import.meta); // { url: "file:///home/user/welcome-module.js" }
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 249. ### What is a comma operator
+
      The comma operator is used to evaluate each of its operands from left to right and returns the value of the last operand. This is totally different from comma usage within arrays, objects, and function arguments and parameters. For example, the usage for numeric expressions would be as below,
+
      ```javascript
      var x = 1;
      x = (x++, x);
+
      console.log(x); // 2
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 250. ### What is the advantage of a comma operator
+
      It is normally used to include multiple expressions in a location that requires a single expression. One of the common usages of this comma operator is to supply multiple parameters in a `for` loop. For example, the below for loop uses multiple expressions in a single location using comma operator,
+
      ```javascript
      for (var a = 0, b =10; a <= 10; a++, b--)
      ```
+
      You can also use the comma operator in a return statement where it processes before returning.
+
      ```javascript
      function myFunction() {
        var a = 1;
        return (a += 10), a; // 11
      }
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 251. ### What is typescript
+
      TypeScript is a typed superset of JavaScript created by Microsoft that adds optional types, classes, async/await, and many other features, and compiles to plain JavaScript. Angular built entirely in TypeScript and used as a primary language. You can install it globally as
+
      ```bash
      npm install -g typescript
      ```
+
      Let's see a simple example of TypeScript usage,
+
      ```typescript
      function greeting(name: string): string {
        return "Hello, " + name;
      }
+
      let user = "Sudheer";
+
      console.log(greeting(user));
      ```
+
      The greeting method allows only string type as argument.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 252. ### What are the differences between javascript and typescript
+
      Below are the list of differences between javascript and typescript,
+
      | feature             | typescript                            | javascript                                      |
      | ------------------- | ------------------------------------- | ----------------------------------------------- |
      | Language paradigm   | Object oriented programming language  | Scripting language                              |
@@ -4407,34 +4538,53 @@
      | Modules             | Supported                             | Not supported                                   |
      | Interface           | It has interfaces concept             | Doesn't support interfaces                      |
      | Optional parameters | Functions support optional parameters | No support of optional parameters for functions |
+
      **[⬆ Back to Top](#table-of-contents)**
+
 253. ### What are the advantages of typescript over javascript
+
      Below are some of the advantages of typescript over javascript,
+
      1. TypeScript is able to find compile time errors at the development time only and it makes sures less runtime errors. Whereas javascript is an interpreted language.
      2. TypeScript is strongly-typed or supports static typing which allows for checking type correctness at compile time. This is not available in javascript.
      3. TypeScript compiler can compile the .ts files into ES3,ES4 and ES5 unlike ES6 features of javascript which may not be supported in some browsers.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 254. ### What is an object initializer
+
      An object initializer is an expression that describes the initialization of an Object. The syntax for this expression is represented as a comma-delimited list of zero or more pairs of property names and associated values of an object, enclosed in curly braces ({}). This is also known as literal notation. It is one of the ways to create an object.
+
      ```javascript
      var initObject = { a: "John", b: 50, c: {} };
+
      console.log(initObject.a); // John
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 255. ### What is a constructor method
+
      The constructor method is a special method for creating and initializing an object created within a class. If you do not specify a constructor method, a default constructor is used. The example usage of constructor would be as below,
+
      ```javascript
      class Employee {
        constructor() {
          this.name = "John";
        }
      }
+
      var employeeObject = new Employee();
+
      console.log(employeeObject.name); // John
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 256. ### What happens if you write constructor more than once in a class
+
      The "constructor" in a class is a special method and it should be defined only once in a class. i.e, If you write a constructor method more than once in a class it will throw a `SyntaxError` error.
+
      ```javascript
       class Employee {
         constructor() {
@@ -4444,64 +4594,95 @@
           this.age = 30;
         }
       }
+
       var employeeObject = new Employee();
+
       console.log(employeeObject.name);
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 257. ### How do you call the constructor of a parent class
+
      You can use the `super` keyword to call the constructor of a parent class. Remember that `super()` must be called before using 'this' reference. Otherwise it will cause a reference error. Let's the usage of it,
+
      ```javascript
      class Square extends Rectangle {
        constructor(length) {
          super(length, length);
          this.name = "Square";
        }
+
        get area() {
          return this.width * this.height;
        }
+
        set area(value) {
          this.area = value;
        }
      }
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 258. ### How do you get the prototype of an object
+
      You can use the `Object.getPrototypeOf(obj)` method to return the prototype of the specified object. i.e. The value of the internal `prototype` property. If there are no inherited properties then `null` value is returned.
+
      ```javascript
      const newPrototype = {};
      const newObject = Object.create(newPrototype);
+
      console.log(Object.getPrototypeOf(newObject) === newPrototype); // true
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 259. ### What happens If I pass string type for getPrototype method
+
      In ES5, it will throw a TypeError exception if the obj parameter isn't an object. Whereas in ES2015, the parameter will be coerced to an `Object`.
+
      ```javascript
      // ES5
      Object.getPrototypeOf("James"); // TypeError: "James" is not an object
      // ES2015
      Object.getPrototypeOf("James"); // String.prototype
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 260. ### How do you set prototype of one object to another
+
      You can use the `Object.setPrototypeOf()` method that sets the prototype (i.e., the internal `Prototype` property) of a specified object to another object or null. For example, if you want to set prototype of a square object to rectangle object would be as follows,
+
      ```javascript
      Object.setPrototypeOf(Square.prototype, Rectangle.prototype);
      Object.setPrototypeOf({}, null);
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 261. ### How do you check whether an object can be extendable or not
+
      The `Object.isExtensible()` method is used to determine if an object is extendable or not. i.e, Whether it can have new properties added to it or not.
+
      ```javascript
      const newObject = {};
      console.log(Object.isExtensible(newObject)); //true
      ```
+
      **Note:** By default, all the objects are extendable. i.e, The new properties can be added or modified.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 262. ### How do you prevent an object to extend
+
      The `Object.preventExtensions()` method is used to prevent new properties from ever being added to an object. In other words, it prevents future extensions to the object. Let's see the usage of this property,
+
      ```javascript
      const newObject = {};
      Object.preventExtensions(newObject); // NOT extendable
+
      try {
        Object.defineProperty(newObject, "newProperty", {
          // Adding new property
@@ -4511,26 +4692,39 @@
        console.log(e); // TypeError: Cannot define property newProperty, object is not extensible
      }
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 263. ### What are the different ways to make an object non-extensible
+
      You can mark an object non-extensible in 3 ways,
+
      1. Object.preventExtensions
      2. Object.seal
      3. Object.freeze
+
      ```javascript
      var newObject = {};
+
      Object.preventExtensions(newObject); // Prevent objects are non-extensible
      Object.isExtensible(newObject); // false
+
      var sealedObject = Object.seal({}); // Sealed objects are non-extensible
      Object.isExtensible(sealedObject); // false
+
      var frozenObject = Object.freeze({}); // Frozen objects are non-extensible
      Object.isExtensible(frozenObject); // false
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 264. ### How do you define multiple properties on an object
+
      The `Object.defineProperties()` method is used to define new or modify existing properties directly on an object and returning the object. Let's define multiple properties on an empty object,
+
      ```javascript
      const newObject = {};
+
      Object.defineProperties(newObject, {
        newProperty1: {
          value: "John",
@@ -4539,19 +4733,28 @@
        newProperty2: {},
      });
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 265. ### What is MEAN in javascript
+
      The MEAN (MongoDB, Express, AngularJS, and Node.js) stack is the most popular open-source JavaScript software tech stack available for building dynamic web apps where you can write both the server-side and client-side halves of the web project entirely in JavaScript.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 266. ### What Is Obfuscation in javascript
+
      Obfuscation is the deliberate act of creating obfuscated javascript code(i.e, source or machine code) that is difficult for humans to understand. It is something similar to encryption, but a machine can understand the code and execute it.
      Let's see the below function before Obfuscation,
+
      ```javascript
      function greeting() {
        console.log("Hello, welcome to JS world");
      }
      ```
+
      And after the code Obfuscation, it would be appeared as below,
+
      ```javascript
      eval(
        (function (p, a, c, k, e, d) {
@@ -4588,48 +4791,73 @@
        )
      );
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 267. ### Why do you need Obfuscation
+
      Below are the few reasons for Obfuscation,
+
      1. The Code size will be reduced. So data transfers between server and client will be fast.
      2. It hides the business logic from outside world and protects the code from others
      3. Reverse engineering is highly difficult
      4. The download time will be reduced
+
      **[⬆ Back to Top](#table-of-contents)**
+
 268. ### What is Minification
+
      Minification is the process of removing all unnecessary characters(empty spaces are removed) and variables will be renamed without changing it's functionality. It is also a type of obfuscation .
+
      **[⬆ Back to Top](#table-of-contents)**
+
 269. ### What are the advantages of minification
+
      Normally it is recommended to use minification for heavy traffic and intensive requirements of resources. It reduces file sizes with below benefits,
+
      1. Decreases loading times of a web page
      2. Saves bandwidth usages
+
      **[⬆ Back to Top](#table-of-contents)**
+
 270. ### What are the differences between Obfuscation and Encryption
+
      Below are the main differences between Obfuscation and Encryption,
+
      | Feature            | Obfuscation                                     | Encryption                                                              |
      | ------------------ | ----------------------------------------------- | ----------------------------------------------------------------------- |
      | Definition         | Changing the form of any data in any other form | Changing the form of information to an unreadable format by using a key |
      | A key to decode    | It can be decoded without any key               | It is required                                                          |
      | Target data format | It will be converted to a complex form          | Converted into an unreadable format                                     |
+
      **[⬆ Back to Top](#table-of-contents)**
+
 271. ### What are the common tools used for minification
+
      There are many online/offline tools to minify the javascript files,
+
      1. Google's Closure Compiler
      2. UglifyJS2
      3. jsmin
      4. javascript-minifier.com/
      5. prettydiff.com
+
      **[⬆ Back to Top](#table-of-contents)**
+
 272. ### How do you perform form validation using javascript
+
      JavaScript can be used to perform HTML form validation. For example, if the form field is empty, the function needs to notify, and return false, to prevent the form being submitted.
      Lets' perform user login in an html form,
+
      ```html
      <form name="myForm" onsubmit="return validateForm()" method="post">
        User name: <input type="text" name="uname" />
        <input type="submit" value="Submit" />
      </form>
      ```
+
      And the validation on user login is below,
+
      ```javascript
      function validateForm() {
        var x = document.forms["myForm"]["uname"].value;
@@ -4639,22 +4867,32 @@
        }
      }
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 273. ### How do you perform form validation without javascript
+
      You can perform HTML form validation automatically without using javascript. The validation enabled by applying the `required` attribute to prevent form submission when the input is empty.
+
      ```html
      <form method="post">
        <input type="text" name="uname" required />
        <input type="submit" value="Submit" />
      </form>
      ```
+
      **Note:** Automatic form validation does not work in Internet Explorer 9 or earlier.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 274. ### What are the DOM methods available for constraint validation
+
      The below DOM methods are available for constraint validation on an invalid input,
+
      1. checkValidity(): It returns true if an input element contains valid data.
      2. setCustomValidity(): It is used to set the validationMessage property of an input element.
         Let's take an user login form with DOM validations
+
      ```javascript
      function myFunction() {
        var userName = document.getElementById("uname");
@@ -4667,15 +4905,23 @@
        }
      }
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 275. ### What are the available constraint validation DOM properties
+
      Below are the list of some of the constraint validation DOM properties available,
+
      1. validity: It provides a list of boolean properties related to the validity of an input element.
      2. validationMessage: It displays the message when the validity is false.
      3. willValidate: It indicates if an input element will be validated or not.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 276. ### What are the list of validity properties
+
      The validity property of an input element provides a set of properties related to the validity of data.
+
      1. customError: It returns true, if a custom validity message is set.
      2. patternMismatch: It returns true, if an element's value does not match its pattern attribute.
      3. rangeOverflow: It returns true, if an element's value is greater than its max attribute.
@@ -4685,13 +4931,18 @@
      7. typeMismatch: It returns true, if an element's value is invalid according to type attribute.
      8. valueMissing: It returns true, if an element with a required attribute has no value.
      9. valid: It returns true, if an element's value is valid.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 277. ### Give an example usage of rangeOverflow property
+
      If an element's value is greater than its max attribute then rangeOverflow property returns true. For example, the below form submission throws an error if the value is more than 100,
+
      ```html
      <input id="age" type="number" max="100" />
      <button onclick="myOverflowFunction()">OK</button>
      ```
+
      ```javascript
      function myOverflowFunction() {
        if (document.getElementById("age").validity.rangeOverflow) {
@@ -4699,35 +4950,52 @@
        }
      }
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 278. ### Is enums feature available in javascript
+
      No, javascript does not natively support enums. But there are different kinds of solutions to simulate them even though they may not provide exact equivalents. For example, you can use freeze or seal on object,
+
      ```javascript
      var DaysEnum = Object.freeze({"monday":1, "tuesday":2, "wednesday":3, ...})
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 279. ### What is an enum
+
      An enum is a type restricting variables to one value from a predefined set of constants. JavaScript has no enums but typescript provides built-in enum support.
+
      ```javascript
      enum Color {
       RED, GREEN, BLUE
      }
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 280. ### How do you list all properties of an object
+
      You can use the `Object.getOwnPropertyNames()` method which returns an array of all properties found directly in a given object. Let's the usage of it in an example,
+
      ```javascript
      const newObject = {
        a: 1,
        b: 2,
        c: 3,
      };
+
      console.log(Object.getOwnPropertyNames(newObject));
      ["a", "b", "c"];
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 281. ### How do you get property descriptors of an object
+
      You can use the `Object.getOwnPropertyDescriptors()` method which returns all own property descriptors of a given object. The example usage of this method is below,
+
      ```javascript
      const newObject = {
        a: 1,
@@ -4740,54 +5008,79 @@
      console.log(descriptorsObject.a.enumerable); //true
      console.log(descriptorsObject.a.value); // 1
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 282. ### What are the attributes provided by a property descriptor
+
      A property descriptor is a record which has the following attributes
+
      1. value: The value associated with the property
      2. writable: Determines whether the value associated with the property can be changed or not
      3. configurable: Returns true if the type of this property descriptor can be changed and if the property can be deleted from the corresponding object.
      4. enumerable: Determines whether the property appears during enumeration of the properties on the corresponding object or not.
      5. set: A function which serves as a setter for the property
      6. get: A function which serves as a getter for the property
+
      **[⬆ Back to Top](#table-of-contents)**
+
 283. ### How do you extend classes
+
      The `extends` keyword is used in class declarations/expressions to create a class which is a child of another class. It can be used to subclass custom classes as well as built-in objects. The syntax would be as below,
+
      ```javascript
      class ChildClass extends ParentClass { ... }
      ```
+
      Let's take an example of Square subclass from Polygon parent class,
+
      ```javascript
      class Square extends Rectangle {
        constructor(length) {
          super(length, length);
          this.name = "Square";
        }
+
        get area() {
          return this.width * this.height;
        }
+
        set area(value) {
          this.area = value;
        }
      }
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 284. ### How do I modify the url without reloading the page
+
      The `window.location.href` property will be helpful to modify the url but it reloads the page. HTML5 introduced the `history.pushState()` and `history.replaceState()` methods, which allow you to add and modify history entries, respectively. For example, you can use pushState as below,
+
      ```javascript
      window.history.pushState("page2", "Title", "/page2.html");
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 285. ### How do you check whether an array includes a particular value or not
+
      The `Array#includes()` method is used to determine whether an array includes a particular value among its entries by returning either true or false. Let's see an example to find an element(numeric and string) within an array.
+
      ```javascript
      var numericArray = [1, 2, 3, 4];
      console.log(numericArray.includes(3)); // true
+
      var stringArray = ["green", "yellow", "blue"];
      console.log(stringArray.includes("blue")); //true
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 286. ### How do you compare scalar arrays
+
      You can use length and every method of arrays to compare two scalar(compared directly using ===) arrays. The combination of these expressions can give the expected result,
+
      ```javascript
      const arrayFirst = [1, 2, 3, 4, 5];
      const arraySecond = [1, 2, 3, 4, 5];
@@ -4796,7 +5089,9 @@
          arrayFirst.every((value, index) => value === arraySecond[index])
      ); // true
      ```
+
      If you would like to compare arrays irrespective of order then you should sort them before,
+
      ```javascript
      const arrayFirst = [2, 3, 1, 4, 5];
      const arraySecond = [1, 2, 3, 4, 5];
@@ -4805,26 +5100,38 @@
          arrayFirst.sort().every((value, index) => value === arraySecond[index])
      ); //true
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 287. ### How to get the value from get parameters
+
      The `new URL()` object accepts the url string and `searchParams` property of this object can be used to access the get parameters. Remember that you may need to use polyfill or `window.location` to access the URL in older browsers(including IE).
+
      ```javascript
      let urlString = "http://www.some-domain.com/about.html?x=1&y=2&z=3"; //window.location.href
      let url = new URL(urlString);
      let parameterZ = url.searchParams.get("z");
      console.log(parameterZ); // 3
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 288. ### How do you print numbers with commas as thousand separators
+
      You can use the `Number.prototype.toLocaleString()` method which returns a string with a language-sensitive representation such as thousand separator,currency etc of this number.
+
      ```javascript
      function convertToThousandFormat(x) {
        return x.toLocaleString(); // 12,345.679
      }
+
      console.log(convertToThousandFormat(12345.6789));
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 289. ### What is the difference between java and javascript
+
      Both are totally unrelated programming languages and no relation between them. Java is statically typed, compiled, runs on its own VM. Whereas Javascript is dynamically typed, interpreted, and runs in a browser and nodejs environments. Let's see the major differences in a tabular format,
      | Feature | Java | JavaScript |
      |---- | ---- | -----
@@ -4833,9 +5140,13 @@
      | Scoping | Block scoped | Function-scoped |
      | Concurrency | Thread based | event based |
      | Memory | Uses more memory | Uses less memory. Hence it will be used for web pages |
+
      **[⬆ Back to Top](#table-of-contents)**
+
 290. ### Does JavaScript supports namespace
+
      JavaScript doesn’t support namespace by default. So if you create any element(function, method, object, variable) then it becomes global and pollutes the global namespace. Let's take an example of defining two functions without any namespace,
+
      ```javascript
      function func1() {
        console.log("This is a first definition");
@@ -4845,11 +5156,17 @@
      }
      func1(); // This is a second definition
      ```
+
      It always calls the second function definition. In this case, namespace will solve the name collision problem.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 291. ### How do you declare namespace
+
      Even though JavaScript lacks namespaces, we can use Objects , IIFE to create namespaces.
+
      1. **Using Object Literal Notation:** Let's wrap variables and functions inside an Object literal which acts as a namespace. After that you can access them using object notation
+
      ```javascript
      var namespaceOne = {
         function func1() {
@@ -4864,7 +5181,9 @@
      namespaceOne.func1(); // This is a first definition
      namespaceTwo.func1(); // This is a second definition
      ```
+
      1. **Using IIFE (Immediately invoked function expression):** The outer pair of parentheses of IIFE creates a local scope for all the code inside of it and makes the anonymous function a function expression. Due to that, you can create the same function in two different function expressions to act as a namespace.
+
      ```javascript
      (function () {
        function fun1() {
@@ -4872,6 +5191,7 @@
        }
        fun1();
      })();
+
      (function () {
        function fun1() {
          console.log("This is a second definition");
@@ -4879,7 +5199,9 @@
        fun1();
      })();
      ```
+
      1. **Using a block and a let/const declaration:** In ECMAScript 6, you can simply use a block and a let declaration to restrict the scope of a variable to a block.
+
      ```javascript
      {
        let myFunction = function fun1() {
@@ -4888,6 +5210,7 @@
        myFunction();
      }
      //myFunction(): ReferenceError: myFunction is not defined.
+
      {
        let myFunction = function fun1() {
          console.log("This is a second definition");
@@ -4896,23 +5219,35 @@
      }
      //myFunction(): ReferenceError: myFunction is not defined.
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 292. ### How do you invoke javascript code in an iframe from parent page
+
      Initially iFrame needs to be accessed using either `document.getElementBy` or `window.frames`. After that `contentWindow` property of iFrame gives the access for targetFunction
+
      ```javascript
      document.getElementById("targetFrame").contentWindow.targetFunction();
      window.frames[0].frameElement.contentWindow.targetFunction(); // Accessing iframe this way may not work in latest versions chrome and firefox
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 293. ### How do get the timezone offset from date
+
      You can use the `getTimezoneOffset` method of the date object. This method returns the time zone difference, in minutes, from current locale (host system settings) to UTC
+
      ```javascript
      var offset = new Date().getTimezoneOffset();
      console.log(offset); // -480
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 294. ### How do you load CSS and JS files dynamically
+
      You can create both link and script elements in the DOM and append them as child to head tag. Let's create a function to add script and style resources as below,
+
      ```javascript
      function loadAssets(filename, filetype) {
        if (filetype == "css") {
@@ -4931,100 +5266,151 @@
          document.getElementsByTagName("head")[0].appendChild(fileReference);
      }
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 295. ### What are the different methods to find HTML elements in DOM
+
      If you want to access any element in an HTML page, you need to start with accessing the document object. Later you can use any of the below methods to find the HTML element,
+
      1. document.getElementById(id): It finds an element by Id
      2. document.getElementsByTagName(name): It finds an element by tag name
      3. document.getElementsByClassName(name): It finds an element by class name
+
      **[⬆ Back to Top](#table-of-contents)**
+
 296. ### What is jQuery
+
      jQuery is a popular cross-browser JavaScript library that provides Document Object Model (DOM) traversal, event handling, animations and AJAX interactions by minimizing the discrepancies across browsers. It is widely famous with its philosophy of “Write less, do more”. For example, you can display welcome message on the page load using jQuery as below,
+
      ```javascript
      $(document).ready(function () {
        // It selects the document and apply the function on page load
        alert("Welcome to jQuery world");
      });
      ```
+
      **Note:** You can download it from jquery's official site or install it from CDNs, like google.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 297. ### What is V8 JavaScript engine
+
      V8 is an open source high-performance JavaScript engine used by the Google Chrome browser, written in C++. It is also being used in the node.js project. It implements ECMAScript and WebAssembly, and runs on Windows 7 or later, macOS 10.12+, and Linux systems that use x64, IA-32, ARM, or MIPS processors.
      **Note:** It can run standalone, or can be embedded into any C++ application.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 298. ### Why do we call javascript as dynamic language
+
      JavaScript is a loosely typed or a dynamic language because variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned/reassigned with values of all types.
+
      ```javascript
      let age = 50; // age is a number now
      age = "old"; // age is a string now
      age = true; // age is a boolean
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 299. ### What is a void operator
+
      The `void` operator evaluates the given expression and then returns undefined(i.e, without returning value). The syntax would be as below,
+
      ```javascript
      void expression;
      void expression;
      ```
+
      Let's display a message without any redirection or reload
+
      ```javascript
      <a href="javascript:void(alert('Welcome to JS world'))">
        Click here to see a message
      </a>
      ```
+
      **Note:** This operator is often used to obtain the undefined primitive value, using "void(0)".
+
      **[⬆ Back to Top](#table-of-contents)**
+
 300. ### How to set the cursor to wait
+
      The cursor can be set to wait in JavaScript by using the property "cursor". Let's perform this behavior on page load using the below function.
+
      ```javascript
      function myFunction() {
        window.document.body.style.cursor = "wait";
      }
      ```
+
      and this function invoked on page load
+
      ```html
      <body onload="myFunction()"></body>
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 301. ### How do you create an infinite loop
+
      You can create infinite loops using for and while loops without using any expressions. The for loop construct or syntax is better approach in terms of ESLint and code optimizer tools,
+
      ```javascript
      for (;;) {}
      while (true) {}
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 302. ### Why do you need to avoid with statement
+
      JavaScript's with statement was intended to provide a shorthand for writing recurring accesses to objects. So it can help reduce file size by reducing the need to repeat a lengthy object reference without performance penalty. Let's take an example where it is used to avoid redundancy when accessing an object several times.
+
      ```javascript
      a.b.c.greeting = "welcome";
      a.b.c.age = 32;
      ```
+
      Using `with` it turns this into:
+
      ```javascript
      with (a.b.c) {
        greeting = "welcome";
        age = 32;
      }
      ```
+
      But this `with` statement creates performance problems since one cannot predict whether an argument will refer to a real variable or to a property inside the with argument.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 303. ### What is the output of below for loops
+
      ```javascript
      for (var i = 0; i < 4; i++) {
        // global scope
        setTimeout(() => console.log(i));
      }
+
      for (let i = 0; i < 4; i++) {
        // block scope
        setTimeout(() => console.log(i));
      }
      ```
+
      The output of the above for loops is 4 4 4 4 and 0 1 2 3
+
      **Explanation:** Due to the event queue/loop of javascript, the `setTimeout` callback function is called after the loop has been executed. Since the variable i is declared with the `var` keyword it became a global variable and the value was equal to 4 using iteration when the time `setTimeout` function is invoked. Hence, the output of the first loop is `4 4 4 4`.
+
      Whereas in the second loop, the variable i is declared as the `let` keyword it becomes a block scoped variable and it holds a new value(0, 1 ,2 3) for each iteration. Hence, the output of the first loop is `0 1 2 3`.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 304. ### List down some of the features of ES6
+
      Below are the list of some new features of ES6,
+
      1. Support for constants or immutable variables
      2. Block-scope support for variables, constants and functions
      3. Arrow functions
@@ -5037,16 +5423,25 @@
      10. Promises
      11. Classes
      12. Modules
+
      **[⬆ Back to Top](#table-of-contents)**
+
 305. ### What is ES6
+
      ES6 is the sixth edition of the javascript language and it was released in June 2015. It was initially known as ECMAScript 6 (ES6) and later renamed to ECMAScript 2015. Almost all the modern browsers support ES6 but for the old browsers there are many transpilers, like Babel.js etc.
+
      **[⬆ Back to Top](#table-of-contents)**
+
 306. ### Can I redeclare let and const variables
+
      No, you cannot redeclare let and const variables. If you do, it throws below error
+
      ```bash
      Uncaught SyntaxError: Identifier 'someVariable' has already been declared
      ```
+
      **Explanation:** The variable declaration with `var` keyword refers to a function scope and the variable is treated as if it were declared at the top of the enclosing scope due to hoisting feature. So all the multiple declarations contributing to the same hoisted variable without any error. Let's take an example of re-declaring variables in the same scope for both var and let/const variables.
+
      ```javascript
      var name = "John";
      function myFunc() {
@@ -5057,7 +5452,9 @@
      myFunc();
      alert(name); // John
      ```
+
      The block-scoped multi-declaration throws syntax error,
+
      ```javascript
      let name = "John";
      function myFunc() {
@@ -5065,45 +5462,64 @@
        let name = "Abraham"; // Uncaught SyntaxError: Identifier 'name' has already been declared
        alert(name);
      }
+
      myFunc();
      alert(name);
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 307. ### Is const variable makes the value immutable
+
      No, the const variable doesn't make the value immutable. But it disallows subsequent assignments(i.e, You can declare with assignment but can't assign another value later)
+
      ```javascript
      const userList = [];
      userList.push("John"); // Can mutate even though it can't re-assign
      console.log(userList); // ['John']
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 308. ### What are default parameters
+
      In E5, we need to depend on logical OR operators to handle default values of function parameters. Whereas in ES6, Default function parameters feature allows parameters to be initialized with default values if no value or undefined is passed. Let's compare the behavior with an examples,
+
      ```javascript
      //ES5
      var calculateArea = function (height, width) {
        height = height || 50;
        width = width || 60;
+
        return width * height;
      };
      console.log(calculateArea()); //300
      ```
+
      The default parameters makes the initialization more simpler,
+
      ```javascript
      //ES6
      var calculateArea = function (height = 50, width = 60) {
        return width * height;
      };
+
      console.log(calculateArea()); //300
      ```
+
      **[⬆ Back to Top](#table-of-contents)**
+
 309. ### What are template literals
+
      Template literals or template strings are string literals allowing embedded expressions. These are enclosed by the back-tick (`) character instead of double or single quotes.
      In E6, this feature enables using dynamic expressions as below,
+
      ```javascript
      var greeting = `Welcome to JS World, Mr. ${firstName} ${lastName}.`;
      ```
+
      In ES5, you need break string like below,
+
      ```javascript
      var greeting = 'Welcome to JS World, Mr. ' + firstName + ' ' + lastName.`
      ```
@@ -5159,13 +5575,16 @@
      var user1 = "John";
      var skill1 = "JavaScript";
      var experience1 = 15;
+
      var user2 = "Kane";
      var skill2 = "JavaScript";
      var experience2 = 5;
+
      function myInfoTag(strings, userExp, experienceExp, skillExp) {
        var str0 = strings[0]; // "Mr/Ms. "
        var str1 = strings[1]; // " is a/an "
        var str2 = strings[2]; // "in"
+
        var expertiseStr;
        if (experienceExp > 10) {
          expertiseStr = "expert developer";
@@ -5174,10 +5593,13 @@
        } else {
          expertiseStr = "junior developer";
        }
+
        return `${str0}${userExp}${str1}${expertiseStr}${str2}${skillExp}`;
      }
+
      var output1 = myInfoTag`Mr/Ms. ${user1} is a/an ${experience1} in ${skill1}`;
      var output2 = myInfoTag`Mr/Ms. ${user2} is a/an ${experience2} in ${skill2}`;
+
      console.log(output1); // Mr/Ms. John is a/an expert developer in JavaScript
      console.log(output2); // Mr/Ms. Kane is a/an junior developer in JavaScript
      ```
@@ -5221,6 +5643,7 @@
 
      ```javascript
      var [one, two, three] = ["JAN", "FEB", "MARCH"];
+
      console.log(one); // "JAN"
      console.log(two); // "FEB"
      console.log(three); // "MARCH"
@@ -5230,6 +5653,7 @@
 
      ```javascript
      var { name, age } = { name: "John", age: 32 };
+
      console.log(name); // John
      console.log(age); // 32
      ```
@@ -5244,6 +5668,7 @@
 
      ```javascript
      var x, y, z;
+
      [x = 2, y = 4, z = 6] = [10];
      console.log(x); // 10
      console.log(y); // 4
@@ -5254,6 +5679,7 @@
 
      ```javascript
      var { x = 2, y = 4, z = 6 } = { x: 10 };
+
      console.log(x); // 10
      console.log(y); // 4
      console.log(z); // 6
@@ -5268,6 +5694,7 @@
      ```javascript
      var x = 10,
        y = 20;
+
      [x, y] = [y, x];
      console.log(x); // 20
      console.log(y); // 10
@@ -5396,6 +5823,7 @@
 
      ```javascript
      let arrayIterable = [10, 20, 30, 40, 50];
+
      for (let value of arrayIterable) {
        value++;
        console.log(value); // 11 21 31 41 51
@@ -10400,3 +10828,5 @@ You can use `.catch()` function in promises to avoid these issues with asynchron
 The questions provided in this repository are the summary of frequently asked questions across numerous companies. We cannot guarantee that these questions will actually be asked during your interview process, nor should you focus on memorizing all of them. The primary purpose is for you to get a sense of what some companies might ask — do not get discouraged if you don't know the answer to all of them ⁠— that is ok!
 
 Good luck with your interview 😊
+
+---
